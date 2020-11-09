@@ -14,6 +14,7 @@
 			reqObj.onreadystatechange = function() {
 				alert("running rsc func");
 				if(request.readyState==4 && request.status==200) {
+					alert("ready");
 					var setlistData = request.responseText;
 					returnHTML = setlistData;
 					document.getElementById("display").innerHTML =returnHTML;
