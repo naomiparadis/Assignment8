@@ -12,6 +12,7 @@
 			reqObj.open("GET", "https://naomiparadis.github.io/Assignment8/setlist.json", true);
 			
 			reqObj.onreadystatechange = function() {
+				alert("running rsc func");
 				if(request.readyState==4 && request.status==200) {
 					var setlistData = request.responseText;
 					returnHTML = setlistData;
