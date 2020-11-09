@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Json Setlist</title>
+	
+	
+	<script language="javascript">
+		function getData() {
+			var reqObj = new XMLHttpRequest();
+			if (!reqObj) {
+				alert("cant get reqobj"); return;
+			}
+			data = "id:101";
+			reqObj.onreadystatechange = getMyData();
+			reqObj.open("GET", "https://naomiparadis.github.io/Assignment8/setlist.json", true);
+			reqObj.send(data);
+		}
+		
+		function getMyData() {
+			if(this.readyState==4 && this.status==200) {
+				var setlistData = request.responseText;
+				returnHTML = setlistData;
+				document.getElementById("display").innerHTML =returnHTML;
+			}
+		
+		}
+	
+	/*function DeserializeList() {
+		
+	}
+	
+	function DisplayString() {
+		var str = "";
+		for (i=0; i<songs.length; i++) {
+			str += JSON.stringify(songs[i]);
+			//songs[i] = JSON.parse(songs[i]);
+		}
+		document.write(str);
+		alert(songs);
+	}
+		
+	function DisplayFormatted() {
+		var html = "";
+		for (i=0; i<songs.length; i++) {
+			html += JSON.stringify(songs[i]);
+		}
+	}*/
+		
+	DisplayString();
+	DisplayFormatted();
+	</script>
+	
+	
+</head>
+
+<body onLoad="getData()">
+	<h1> JSON Setlist</h1>
+	<div id="display">
+	</div>
+	
+</body>
+</html>
