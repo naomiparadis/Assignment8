@@ -13,44 +13,39 @@
 			
 			reqObj.onreadystatechange = function() {
 				if(reqObj.readyState==4 && reqObj.status==200) {
-					alert("ready");
+					//alert("ready");
 					var setlistData = reqObj.responseText;
 					returnHTML = setlistData;
-					document.getElementById("display").innerHTML =returnHTML;
+					document.getElementById("serial").innerHTML =returnHTML;
+					
+					var setlistObj = JSON.parse(setlistData);
+					DisplayFormatted(setlistObj);
 				};
 			};
 			reqObj.send();
 		};
 		
-		/*function getMyData() {
-			if(this.readyState==4 && this.status==200) {
-				var setlistData = request.responseText;
-				returnHTML = setlistData;
-				document.getElementById("display").innerHTML =returnHTML;
+	
+		
+	function DisplayFormatted(sl) {
+		var slFormHtml = "";
+		for (i=0; i<sl.length; i++) {
+			var songstr = "";
+			songstr += '<div id="title">' + sl[i].title + '</div>';
+			songstr += '<div>Artist: ' + sl[i].artist + '<br>Year Released: ' + sl[i].year;
+			var genres = sl[i].genre;
+			var gstr = ""; 
+			for(j=0; j<genres.length; j++) {
+				gstr += genres[j];
+				if (j != (genres.length - 1)) {
+					gstr += ', '
+				}
 			}
-		
-		}*/
-	
-	/*function DeserializeList() {
-		
-	}
-	
-	function DisplayString() {
-		var str = "";
-		for (i=0; i<songs.length; i++) {
-			str += JSON.stringify(songs[i]);
-			//songs[i] = JSON.parse(songs[i]);
+			songstr += '<br>Genre: ' + gstr;
+			slFormHtml += songstr;
 		}
-		document.write(str);
-		alert(songs);
+		document.getElementById("format").innerHTML =slFormHtml;
 	}
-		
-	function DisplayFormatted() {
-		var html = "";
-		for (i=0; i<songs.length; i++) {
-			html += JSON.stringify(songs[i]);
-		}
-	}*/
 		
 	//DisplayString();
 	//DisplayFormatted();
@@ -61,7 +56,10 @@
 
 <body onload="getData()">
 	<h1> JSON Setlist</h1>
-	<div id="display">
+	<div id="serial">
+	</div>
+	
+	<div id="format">
 	</div>
 	
 </body>
