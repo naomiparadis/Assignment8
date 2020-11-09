@@ -8,10 +8,7 @@
 	<script language="javascript">
 		function getData() {
 			var reqObj = new XMLHttpRequest();
-			if (!reqObj) {
-				alert("cant get reqobj"); return;
-			}
-			data = "id:101";
+			reqObj.open("GET", "https://naomiparadis.github.io/Assignment8/setlist.json", true);
 			reqObj.onreadystatechange = function() {
 				if(this.readyState==4 && this.status==200) {
 				var setlistData = request.responseText;
@@ -19,7 +16,6 @@
 				document.getElementById("display").innerHTML =returnHTML;
 			}
 				;
-			reqObj.open("GET", "https://naomiparadis.github.io/Assignment8/setlist.json", true);
 			reqObj.send(data);
 		}
 		
