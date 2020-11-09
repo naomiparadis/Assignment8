@@ -1,0 +1,62 @@
+[
+		{
+			"title" : "Sunflower(feat. Steve Lacy)",
+			"artist" : "Vampire Weekend",
+			"genre" : ["Psychadelic Soul"],
+			"year" : 2019	
+		},
+		{
+			"title" : "Back Pocket",
+			"artist" : "Vulfpeck",
+			"genre" : ["Funk"],
+			"year" : 2015	
+		},
+		{
+			"title" : "Heart of Glass",
+			"artist" : "Blondie",
+			"genre" : ["Pop Rock", "New Wave", "Disco"],
+			"year" : 1978	
+		},
+		{
+			"title" : "Ruler of Everything",
+			"artist" : "Tally Hall",
+			"genre" : ["Alternative Rock"],
+			"year" : 2005	
+		},
+		{
+			"title" : "Slippery People",
+			"artist" : "Talking Heads",
+			"genre" : ["New Wave"],
+			"year" : 1982
+		},
+		{
+			"title" : "So Lonely",
+			"artist" : "The Police",
+			"genre" : ["New Wave", "Reggae Rock"],
+			"year" : 1978
+		},
+		{
+			"title" : "From Eden",
+			"artist" : "Hozier",
+			"genre" : ["Soul"],
+			"year" : 2019	
+		},
+		{
+			"title" : "Nothing Is Easy",
+			"artist" : "Jethro Tull",
+			"genre" : ["Progressive Rock", "Hard Rock", "Folk Rock", "Blues Rock"],
+			"year" : 1969
+		},
+		{
+			"title" : "Hang Me Up To Dry",
+			"artist" : "Cold War Kids",
+			"genre" : ["Indie Rock", "Blues Rock"],
+			"year" : 2006
+		},
+		{
+			"title" : "Kisser",
+			"artist" : "Step Rockets",
+			"genre" : ["Indie Rock"],
+			"year" : 2013	
+		}
+	]// JSON Document
