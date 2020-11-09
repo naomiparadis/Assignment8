@@ -12,19 +12,25 @@
 				alert("cant get reqobj"); return;
 			}
 			data = "id:101";
-			reqObj.onreadystatechange = getMyData();
+			reqObj.onreadystatechange = function() {
+				if(this.readyState==4 && this.status==200) {
+				var setlistData = request.responseText;
+				returnHTML = setlistData;
+				document.getElementById("display").innerHTML =returnHTML;
+			}
+				;
 			reqObj.open("GET", "https://naomiparadis.github.io/Assignment8/setlist.json", true);
 			reqObj.send(data);
 		}
 		
-		function getMyData() {
+		/*function getMyData() {
 			if(this.readyState==4 && this.status==200) {
 				var setlistData = request.responseText;
 				returnHTML = setlistData;
 				document.getElementById("display").innerHTML =returnHTML;
 			}
 		
-		}
+		}*/
 	
 	/*function DeserializeList() {
 		
