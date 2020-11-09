@@ -39,19 +39,7 @@
 	function DisplayFormatted(sl) {
 		var slFormHtml = "<h2> Formatted Setlist </h2>";
 		for (i=0; i<sl.length; i++) {
-			var songstr = "<br>";
-			songstr += '<div id="title">' + sl[i].title + '</div>';
-			songstr += '<div>Artist: ' + sl[i].artist + '<br>Year Released: ' + sl[i].year;
-			var genres = sl[i].genre;
-			var gstr = ""; 
-			for(j=0; j<genres.length; j++) {
-				gstr += genres[j];
-				if (j != (genres.length - 1)) {
-					gstr += ', '
-				}
-			}
-			songstr += '<br>Genre: ' + gstr + '</div>';
-			slFormHtml += songstr;
+			slFormHtml += songFormat(sl[i]);
 		}
 		document.getElementById("format").innerHTML =slFormHtml;
 	}
@@ -64,10 +52,7 @@
 			resultHTML = "No songs found with genre '" + document.getElementById("genreToCheck").value + "'";
 		} else {
 			for (i=0; i<songsFound.length; i++) {
-				resultHTML += songsFound[i].title;
-				if (i != (songsFound.length - 1)) {
-					resultHTML += ', ';
-				}
+				resultHTML += songFormat(songsFound[i]);
 			}
 		}
 		document.getElementById("filtered").innerHTML = resultHTML; 
@@ -83,6 +68,22 @@
 			}
 		}
 		return false;
+	}
+		
+	function songFormat(songObj) {
+		var songstr = "<br>";
+			songstr += '<div id="title">' + songObj.title + '</div>';
+			songstr += '<div>Artist: ' + songObj.artist + '<br>Year Released: ' + songObj.year;
+			var genres = songObj.genre;
+			var gstr = ""; 
+			for(j=0; j<genres.length; j++) {
+				gstr += genres[j];
+				if (j != (genres.length - 1)) {
+					gstr += ', '
+				}
+			}
+			songstr += '<br>Genre: ' + gstr + '</div>';
+		return songstr;
 	}
 		
 	</script>
