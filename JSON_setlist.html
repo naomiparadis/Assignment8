@@ -8,15 +8,16 @@
 	<script language="javascript">
 		function getData() {
 			var reqObj = new XMLHttpRequest();
+			
 			reqObj.open("GET", "https://naomiparadis.github.io/Assignment8/setlist.json", true);
+			
 			reqObj.onreadystatechange = function() {
-				if(this.readyState==4 && this.status==200) {
-				var setlistData = request.responseText;
-				returnHTML = setlistData;
-				document.getElementById("display").innerHTML =returnHTML;
-			}
-				;
-			reqObj.send(data);
+				if(request.readyState==4 && request.status==200) {
+					var setlistData = request.responseText;
+					returnHTML = setlistData;
+					document.getElementById("display").innerHTML =returnHTML;
+				};
+			reqObj.send();
 		}
 		
 		/*function getMyData() {
