@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <title>Json Setlist</title>
 	
+	<style type="text/css">
+		body {
+			text-align: center;
+		}
+		#title{
+			font-weight: bold;
+		}
+	</style>
+	
 	
 	<script language="javascript">
 		function getData() {
@@ -28,9 +37,9 @@
 	
 		
 	function DisplayFormatted(sl) {
-		var slFormHtml = "";
+		var slFormHtml = "<h2> Formatted Setlist </h2>";
 		for (i=0; i<sl.length; i++) {
-			var songstr = "";
+			var songstr = "<br>";
 			songstr += '<div id="title">' + sl[i].title + '</div>';
 			songstr += '<div>Artist: ' + sl[i].artist + '<br>Year Released: ' + sl[i].year;
 			var genres = sl[i].genre;
@@ -41,14 +50,41 @@
 					gstr += ', '
 				}
 			}
-			songstr += '<br>Genre: ' + gstr;
+			songstr += '<br>Genre: ' + gstr + '</div>';
 			slFormHtml += songstr;
 		}
 		document.getElementById("format").innerHTML =slFormHtml;
 	}
 		
-	//DisplayString();
-	//DisplayFormatted();
+	function genreFilter() {
+		var slObj = JSON.parse(document.getElementById("serial").innerHTML);
+		var songsFound = slObj.filter(genreCheck);
+		var resultHTML = "";
+		if (songsFound.length<1) {
+			resultHTML = "No songs found with genre '" + document.getElementById("genreToCheck").value + "'";
+		} else {
+			for (i=0; i<songsFound.length; i++) {
+				resultHTML += songsFound[i].title;
+				if (i != (songsFound.length - 1)) {
+					resultHTML += ', ';
+				}
+			}
+		}
+		document.getElementById("filtered").innerHTML = resultHTML; 
+		
+	}
+				
+	function genreCheck(slObj) {
+		var gTarget = document.getElementById("genreToCheck").value;
+		var genres = slObj.genre;
+		for (i=0; i<genres.length; i++) {
+			if (genres[i] == gTarget) {
+				return true;
+			}
+		}
+		return false;
+	}
+		
 	</script>
 	
 	
@@ -56,10 +92,40 @@
 
 <body onload="getData()">
 	<h1> JSON Setlist</h1>
+	<h2> Serialized JSON</h2>
 	<div id="serial">
 	</div>
+	<br>
+<div id="format">
+	</div>
 	
-	<div id="format">
+	<hr>
+	<div>
+		<br>
+	Enter a genre to see songs from the setlist with that genre
+<p>Genre: <select name="genreSelect" id="genreToCheck">
+		<option>Funk</option>
+		<option>Psychadelic Soul</option>
+		<option>Pop Rock</option>
+		<option>New Wave</option>
+		<option>Disco</option>
+		<option>Alternative Rock</option>
+		<option>Reggae Rock</option>
+		<option>Soul</option>
+		<option>Progressive Rock</option>
+		<option>Hard Rock</option>
+		<option>Folk Rock</option>
+		<option>Blues Rock</option>
+		<option>Indie Rock</option>
+	</select>
+	
+	
+	</p>
+	<button onclick="genreFilter()">Filter</button>
+</div>
+	
+	<div id="filtered">
+		&nbsp;
 	</div>
 	
 </body>
