@@ -54,9 +54,19 @@
 </head>
 
 
-<body onload="getZipInfo()">
+<body style="text-align: center" onload="getZipInfo()">
 
-	<h1>Zipcode API</h1>
-	<div id="data">Loading...</div>
+	<h1 >Zipcode API</h1>
+	<div id="data"></div>
+	
+	<div>
+		The API I used on this site takes a given zipcode and returns lots of information about the location in the world such as the longitude, latitude, timezone, city name, etc as shown above.  
+		<br><br>
+		I found this API on a site called ZipCodeAPI.com.  This site also provides API code for other functionality such as finding the distance between two zip codes, finding the zip code for a given location/address, or finding other zip codes nearby.
+		<br><br>
+		This particular API used a URL formula that consisted of the base URL, a client key that you got by signing up, the format of the info to be returned(in this case json), and the zip code you want information on (I used 19087, my home address zip code).
+		<br> <br>
+		I could see this API being useful for any site taking in address info as it could auto fill information for a user based on a given zipcode or the reverse of auto filling a zipcode based on an address.  The area code information could also be used to auto fill for a user inputting their phone number after entering a zip code.
+	</div>
 </body>
 </html>
