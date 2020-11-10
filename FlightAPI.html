@@ -26,10 +26,10 @@
 					// Step 5: wait for done + success
 					console.log("5 - response received");
 					var result = request.responseText;
-					alert(result);
+					//alert(result);
 					var zipObj = JSON.parse(result);
 					
-					document.getElementById("data").innerHTML; 
+					document.getElementById("data").innerHTML= dataFormat(zipObj); 
 					
 				}
 
