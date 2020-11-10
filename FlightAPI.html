@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
 <head>
-	<title>Weather API</title>
+	<title>Zipcode API</title>
 	<meta charset="utf-8"/>
 	<script>
-		function getWeather() {
+		function getZipInfo() {
 			/* Step 1: Make instance of request object...
 			...to make HTTP request after page is loaded*/
 			request = new XMLHttpRequest();
@@ -25,23 +25,12 @@
 
 					// Step 5: wait for done + success
 					console.log("5 - response received");
-					result = request.responseText;
-					//alert(result);
-					//weather = JSON.parse(result);
+					var result = request.responseText;
+					alert(result);
+					var zipObj = JSON.parse(result);
 					
-					document.getElementById("data").innerHTML = result; 
+					document.getElementById("data").innerHTML; 
 					
-				}
-				else if (request.readyState == 4 && request.status != 200) {
-
-					document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
-
-				}
-
-				else if (request.readyState == 3) {
-
-					document.getElementById("data").innerHTML = "Too soon!  Try again";
-
 				}
 
 			}
@@ -49,13 +38,25 @@
 			request.send();
 			console.log("4 - Request sent");
 		}
+		
+		
+	function dataFormat(zipObj) {
+		var str = "zipcode: " + zipObj.zip_code;
+		str += "<br>latitude: " + zipObj.lat;
+		str += "<br>longitude: " + zipObj.lng;
+		str += "<br>city: " + zipObj.city;
+		str += "<br>state: " + zipObj.state;
+		str += "<br>timezone: " + zipObj.timezone.timezone_abbr;
+		str += "<br>area codes: " + zipObj.area_codes;
+		
+	}
 	</script>
 </head>
 
 
-<body onload="getWeather()">
+<body onload="getZipInfo()">
 
-	<h1>Weather</h1>
+	<h1>Zipcode API</h1>
 	<div id="data">Loading...</div>
 </body>
 </html>
