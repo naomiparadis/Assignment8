@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+	<title>Zipcode API</title>
+	<meta charset="utf-8"/>
+	<script>
+		function getZipInfo() {
+			/* Step 1: Make instance of request object...
+			...to make HTTP request after page is loaded*/
+			request = new XMLHttpRequest();
+			console.log("1 - request object created");
+ 
+			// Step 2: Set the URL for the AJAX request to be the JSON file
+ 
+		request.open("GET", "https://www.zipcodeapi.com/rest/js-OPQwp1Iok813bf7U1HgNkn7mfE4I0sRJFSEBO2FBIPqaIaOLshkw8tGqyFRp3dB8/info.json/19087/radians", true)
+
+			console.log("2 - opened request file");
+ 
+			// Step 3: set up event handler/callback
+
+			request.onreadystatechange = function() {
+				console.log("3 - readystatechange event fired.");
+ 
+				if (request.readyState == 4 && request.status == 200) {
+
+					// Step 5: wait for done + success
+					console.log("5 - response received");
+					var result = request.responseText;
+					//alert(result);
+					var zipObj = JSON.parse(result);
+					
+					document.getElementById("data").innerHTML= dataFormat(zipObj); 
+					
+				}
+
+			}
+		// Step 4: fire off the HTTP request
+			request.send();
+			console.log("4 - Request sent");
+		}
+		
+		
+	function dataFormat(zipObj) {
+		var str = "zipcode: " + zipObj.zip_code;
+		str += "<br>latitude: " + zipObj.lat;
+		str += "<br>longitude: " + zipObj.lng;
+		str += "<br>city: " + zipObj.city;
+		str += "<br>state: " + zipObj.state;
+		str += "<br>timezone: " + zipObj.timezone.timezone_abbr;
+		str += "<br>area codes: " + zipObj.area_codes;
+		return str;
+	}
+	</script>
+</head>
+
+
+<body onload="getZipInfo()">
+
+	<h1>Zipcode API</h1>
+	<div id="data">Loading...</div>
+</body>
+</html>
