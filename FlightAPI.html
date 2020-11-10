@@ -26,10 +26,10 @@
 					// Step 5: wait for done + success
 					console.log("5 - response received");
 					result = request.responseText;
-					alert(result);
-					weather = JSON.parse(result);
+					//alert(result);
+					//weather = JSON.parse(result);
 					
-					document.getElementById("data").innerHTML ="current temp in boston: " + weather["current"]["temp"]; 
+					document.getElementById("data").innerHTML = result; 
 					
 				}
 				else if (request.readyState == 4 && request.status != 200) {
